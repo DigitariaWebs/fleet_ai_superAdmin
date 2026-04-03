@@ -116,7 +116,7 @@
 
 .barRow {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(120px, 1fr) auto;
+  grid-template-columns: minmax(190px, 1.65fr) minmax(120px, 1fr) auto;
   align-items: center;
   gap: 0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -133,9 +133,9 @@
 
 .barRow p {
   min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.25;
 }
 
 .barRow span {
@@ -165,7 +165,7 @@
   }
 
   .barRow {
-    grid-template-columns: minmax(0, 1fr) minmax(100px, 1fr) auto;
+    grid-template-columns: minmax(160px, 1.5fr) minmax(100px, 1fr) auto;
   }
 }
 

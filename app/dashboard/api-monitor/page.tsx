@@ -119,7 +119,7 @@ export default function ApiMonitorPage() {
           <div className={styles.bars}>
             {topAgencesApi.map((item) => (
               <div key={item.agence} className={styles.barRow}>
-                <p>{item.agence}</p>
+                <p title={item.agence}>{item.agence}</p>
                 <div>
                   <i style={{ width: `${(item.volume / topVolume) * 100}%` }} />
                 </div>
