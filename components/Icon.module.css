@@ -1,0 +1,27 @@
+.icon {
+  display: inline-flex;
+  color: currentColor;
+  line-height: 0;
+}
+
+.icon svg {
+  width: 1em;
+  height: 1em;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.s16 {
+  font-size: 16px;
+}
+
+.s18 {
+  font-size: 18px;
+}
+
+.s20 {
+  font-size: 20px;
+}

@@ -1,0 +1,113 @@
+.page {
+  display: grid;
+  gap: 1rem;
+}
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.chartsGrid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 0.8rem;
+}
+
+.chartCard,
+.tableCard {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.95rem;
+  background: rgba(46, 28, 43, 0.65);
+}
+
+.chartCard h3,
+.tableCard h3 {
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+}
+
+.chartCard svg {
+  width: 100%;
+  height: 250px;
+}
+
+.donut {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0.4rem auto 0.8rem;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.donut::after {
+  content: "";
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--bg);
+  position: absolute;
+}
+
+.donut span {
+  z-index: 1;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.legend {
+  display: grid;
+  gap: 0.28rem;
+}
+
+.legend p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 0.8rem;
+}
+
+@media (max-width: 1200px) {
+  .kpiGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .chartsGrid,
+  .bottomGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .kpiGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .donut {
+    width: 170px;
+    height: 170px;
+  }
+
+  .donut::after {
+    width: 98px;
+    height: 98px;
+  }
+}

@@ -1,0 +1,68 @@
+.card {
+  background: linear-gradient(135deg, #4a1942, #6b2460);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  min-height: 138px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.danger {
+  box-shadow: inset 0 0 0 1px rgba(240, 90, 40, 0.35);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.iconBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  background: rgba(5, 4, 4, 0.26);
+}
+
+.value {
+  margin: 0.5rem 0;
+  font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+  line-height: 1;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.footer span {
+  font-size: 0.86rem;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.footer small {
+  font-size: 0.8rem;
+  color: var(--text);
+  opacity: 0.8;
+}

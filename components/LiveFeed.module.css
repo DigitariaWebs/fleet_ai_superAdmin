@@ -1,0 +1,93 @@
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(46, 28, 43, 0.65);
+  padding: 1rem;
+  height: 100%;
+  min-height: 380px;
+}
+
+.panel h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.viewport {
+  overflow: hidden;
+  height: 325px;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  animation: feedScroll 20s linear infinite;
+}
+
+.viewport:hover .track {
+  animation-play-state: paused;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 4px 1fr auto;
+  gap: 0.7rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 0.6rem 0.65rem;
+}
+
+.content {
+  min-width: 0;
+}
+
+.color {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--blue);
+}
+
+.color[data-status="Actif"] {
+  background: var(--green);
+}
+
+.color[data-status="En cours"] {
+  background: var(--blue);
+}
+
+.color[data-status="Attention"] {
+  background: var(--orange);
+}
+
+.color[data-status="Erreur"],
+.color[data-status="Suspendu"] {
+  background: var(--red);
+}
+
+.agence {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.action {
+  margin: 0.2rem 0;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.meta {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+@keyframes feedScroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}

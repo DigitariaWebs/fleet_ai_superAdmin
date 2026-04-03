@@ -1,0 +1,103 @@
+.page {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.gaugeCard {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(46, 28, 43, 0.65);
+  padding: 0.95rem;
+}
+
+.gaugeCard h3 {
+  margin: 0;
+}
+
+.gaugeWrap {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.gauge {
+  width: 290px;
+  height: 145px;
+  border-top-left-radius: 290px;
+  border-top-right-radius: 290px;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  align-items: end;
+  justify-items: center;
+}
+
+.gauge::after {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 105px;
+  border-top-left-radius: 210px;
+  border-top-right-radius: 210px;
+  background: var(--bg);
+  bottom: 0;
+}
+
+.gauge span {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1.4rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.scorePill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.scoreGreen {
+  background: rgba(0, 229, 160, 0.12);
+  color: var(--green);
+}
+
+.scoreOrange {
+  background: rgba(240, 165, 0, 0.12);
+  color: var(--orange);
+}
+
+.scoreRed {
+  background: rgba(240, 90, 40, 0.12);
+  color: var(--red);
+}
+
+.ctaWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cta {
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(135deg, #4a1942, #6b2460);
+  padding: 0.75rem 1rem;
+}
+
+@media (max-width: 1200px) {
+  .kpiGrid {
+    grid-template-columns: 1fr;
+  }
+}

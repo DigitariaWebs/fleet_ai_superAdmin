@@ -1,0 +1,44 @@
+.page {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(46, 28, 43, 0.65);
+  padding: 1rem;
+}
+
+.page h3 {
+  margin: 0;
+}
+
+.page > p {
+  color: var(--muted);
+  margin: 0.35rem 0 0.9rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.grid article {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: rgba(5, 4, 4, 0.4);
+}
+
+.grid h4 {
+  margin: 0;
+}
+
+.grid p {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
