@@ -9,12 +9,6 @@
   gap: 0.8rem;
 }
 
-.contentGrid {
-  display: grid;
-  grid-template-columns: 1.9fr 1fr;
-  gap: 0.8rem;
-}
-
 .tableWrap {
   min-width: 0;
 }
@@ -22,10 +16,6 @@
 @media (max-width: 1200px) {
   .kpiGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .contentGrid {
-    grid-template-columns: 1fr;
   }
 }
 

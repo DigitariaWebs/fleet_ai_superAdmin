@@ -21,7 +21,7 @@ export default function UtilisateursPage() {
   return (
     <div className={styles.page}>
       <section className={styles.topGrid}>
-        <article className={styles.donutCard}>
+        <article className={styles.chartCard}>
           <h3>Répartition par rôle</h3>
           <div
             className={styles.donut}

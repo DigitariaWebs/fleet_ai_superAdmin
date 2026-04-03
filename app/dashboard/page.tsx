@@ -2,10 +2,8 @@ import Badge from "@/components/Badge";
 import Icon from "@/components/Icon";
 import KpiCard from "@/components/KpiCard";
 import LiveFeed from "@/components/LiveFeed";
-import StatTable from "@/components/StatTable";
 import {
   activiteRecente,
-  agences,
   kpis,
   repartitionRoles,
   transactionsQuotidiennes30j,
@@ -108,7 +106,7 @@ export default function DashboardOverviewPage() {
         </article>
 
         <article className={styles.chartCard}>
-          <h3>Utilisateurs par rôle</h3>
+          <h3>Répartition utilisateurs par rôle</h3>
           <div
             className={styles.donut}
             style={{
@@ -128,34 +126,7 @@ export default function DashboardOverviewPage() {
         </article>
       </section>
 
-      <section className={styles.bottomGrid}>
-        <article className={styles.tableCard}>
-          <h3>Aperçu des agences</h3>
-          <StatTable
-            headers={[
-              "Agence",
-              "Propriétaire",
-              "Locations actives",
-              "Transactions",
-              "Statut conformité",
-              "Dernière activité",
-              "Actions",
-            ]}
-            rows={agences.slice(0, 6).map((agence) => ({
-              id: agence.id,
-              cells: [
-                agence.nom,
-                agence.proprietaire,
-                agence.locationsActives,
-                agence.transactionsTotal.toLocaleString("fr-CA"),
-                <Badge key={`${agence.id}-badge`} statut={agence.conformiteLoi25} />,
-                agence.derniereActivite,
-                "⋯",
-              ],
-            }))}
-          />
-        </article>
-
+      <section className={styles.feedOnly}>
         <LiveFeed
           titre="Activité récente"
           items={activiteRecente.map((event, index) => ({

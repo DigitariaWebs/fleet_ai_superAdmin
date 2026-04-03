@@ -57,10 +57,10 @@ export type ApiAlerte = {
 export const agences: Agence[] = [
   {
     id: "AG-001",
-    nom: "Agence Atlas Montréal",
+    nom: "Agence Hexa Paris",
     imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=120&q=60",
     proprietaire: "Nadia Bensalem",
-    region: "Montréal",
+    region: "Paris",
     abonnement: "Entreprise",
     employes: 42,
     locationsActives: 67,
@@ -76,10 +76,10 @@ export const agences: Agence[] = [
   },
   {
     id: "AG-002",
-    nom: "FleetPro Québec",
+    nom: "Mobilité Lyonnaise",
     imageUrl: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=120&q=60",
     proprietaire: "Julien Fortin",
-    region: "Québec",
+    region: "Lyon",
     abonnement: "Pro",
     employes: 31,
     locationsActives: 43,
@@ -95,10 +95,10 @@ export const agences: Agence[] = [
   },
   {
     id: "AG-003",
-    nom: "Location VTC Nord",
+    nom: "Riviera Auto Nice",
     imageUrl: "https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=120&q=60",
     proprietaire: "Karim El Idrissi",
-    region: "Saguenay",
+    region: "Nice",
     abonnement: "Standard",
     employes: 18,
     locationsActives: 24,
@@ -114,10 +114,10 @@ export const agences: Agence[] = [
   },
   {
     id: "AG-004",
-    nom: "AutoElite Laval",
+    nom: "Seine Drive Paris",
     imageUrl: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=120&q=60",
     proprietaire: "Sophie Martel",
-    region: "Laval",
+    region: "Paris",
     abonnement: "Pro",
     employes: 27,
     locationsActives: 39,
@@ -133,10 +133,10 @@ export const agences: Agence[] = [
   },
   {
     id: "AG-005",
-    nom: "DriveOne Rive-Sud",
+    nom: "Marseille Mobilité",
     imageUrl: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=120&q=60",
     proprietaire: "Mathieu Côté",
-    region: "Longueuil",
+    region: "Marseille",
     abonnement: "Standard",
     employes: 16,
     locationsActives: 19,
@@ -152,10 +152,10 @@ export const agences: Agence[] = [
   },
   {
     id: "AG-006",
-    nom: "MobiRent Sherbrooke",
+    nom: "Nantes Horizon Auto",
     imageUrl: "https://images.unsplash.com/photo-1485463611174-f302f6a5c1c9?auto=format&fit=crop&w=120&q=60",
     proprietaire: "Camille Roy",
-    region: "Estrie",
+    region: "Nantes",
     abonnement: "Pro",
     employes: 22,
     locationsActives: 26,
@@ -171,10 +171,10 @@ export const agences: Agence[] = [
   },
   {
     id: "AG-007",
-    nom: "NovaCar Gatineau",
+    nom: "Bordeaux Premium Cars",
     imageUrl: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=120&q=60",
     proprietaire: "Hugo Lambert",
-    region: "Outaouais",
+    region: "Bordeaux",
     abonnement: "Entreprise",
     employes: 36,
     locationsActives: 55,
@@ -190,10 +190,10 @@ export const agences: Agence[] = [
   },
   {
     id: "AG-008",
-    nom: "UrbanDrive Trois-Rivières",
+    nom: "Lille Centre Mobilité",
     imageUrl: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=120&q=60",
     proprietaire: "Myriam Lavoie",
-    region: "Mauricie",
+    region: "Lille",
     abonnement: "Standard",
     employes: 14,
     locationsActives: 17,
@@ -209,10 +209,10 @@ export const agences: Agence[] = [
   },
   {
     id: "AG-009",
-    nom: "Rent&Go Lévis",
+    nom: "Toulouse Location Pro",
     imageUrl: "https://images.unsplash.com/photo-1471478331149-c72f17e33c73?auto=format&fit=crop&w=120&q=60",
     proprietaire: "Yanis Tremblay",
-    region: "Chaudière-Appalaches",
+    region: "Toulouse",
     abonnement: "Pro",
     employes: 25,
     locationsActives: 34,
@@ -228,10 +228,10 @@ export const agences: Agence[] = [
   },
   {
     id: "AG-010",
-    nom: "PrimeFleet Centre-Ville",
+    nom: "Cannes Prestige Auto",
     imageUrl: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=120&q=60",
     proprietaire: "Élodie Gagnon",
-    region: "Montréal",
+    region: "Cannes",
     abonnement: "Entreprise",
     employes: 48,
     locationsActives: 72,
@@ -311,9 +311,9 @@ export const transactionsQuotidiennes30j = [
 
 export const repartitionRoles = [
   { role: "Admin Agence", valeur: 14, couleur: "#3EC9F0" },
-  { role: "Agent", valeur: 52, couleur: "#00E5A0" },
-  { role: "Chauffeur", valeur: 23, couleur: "#F0A500" },
-  { role: "Secrétaire", valeur: 11, couleur: "#F05A28" },
+  { role: "Agent", valeur: 52, couleur: "#6B2460" },
+  { role: "Chauffeur", valeur: 23, couleur: "#8B3A7D" },
+  { role: "Secrétaire", valeur: 11, couleur: "#A65497" },
 ];
 
 export const activiteRecente = [
@@ -330,16 +330,16 @@ export const activiteRecente = [
 export const volumeApi7j = [5800, 6420, 7010, 7880, 8420, 9130, 9550];
 
 export const topAgencesApi = [
-  { agence: "PrimeFleet Centre-Ville", volume: 9840 },
-  { agence: "Agence Atlas Montréal", volume: 9120 },
-  { agence: "FleetPro Québec", volume: 8640 },
-  { agence: "NovaCar Gatineau", volume: 7900 },
-  { agence: "AutoElite Laval", volume: 7520 },
-  { agence: "MobiRent Sherbrooke", volume: 6310 },
-  { agence: "Location VTC Nord", volume: 5980 },
-  { agence: "DriveOne Rive-Sud", volume: 5500 },
-  { agence: "Rent&Go Lévis", volume: 5240 },
-  { agence: "UrbanDrive Trois-Rivières", volume: 4100 },
+  { agence: "Cannes Prestige Auto", volume: 9840 },
+  { agence: "Agence Hexa Paris", volume: 9120 },
+  { agence: "Mobilité Lyonnaise", volume: 8640 },
+  { agence: "Bordeaux Premium Cars", volume: 7900 },
+  { agence: "Seine Drive Paris", volume: 7520 },
+  { agence: "Nantes Horizon Auto", volume: 6310 },
+  { agence: "Riviera Auto Nice", volume: 5980 },
+  { agence: "Marseille Mobilité", volume: 5500 },
+  { agence: "Toulouse Location Pro", volume: 5240 },
+  { agence: "Lille Centre Mobilité", volume: 4100 },
 ];
 
 export const apiAlertes: ApiAlerte[] = [

@@ -72,10 +72,10 @@ export default function Sidebar() {
       </div>
 
       <div className={styles.footer}>
-        <div className={styles.avatar}>WD</div>
+        <div className={styles.avatar}>SA</div>
         {!sidebarCollapsed && <div className={styles.adminText}>
-          <strong>Wissem Dib</strong>
-          <span>Super Admin</span>
+          <strong>Super Admin</strong>
+          <span>Compte principal</span>
         </div>}
         <button type="button" className={styles.logout} aria-label="Déconnexion" onClick={handleLogout}>
           <span className={styles.logoutIcon}><Icon name="logout" size={16} /></span>

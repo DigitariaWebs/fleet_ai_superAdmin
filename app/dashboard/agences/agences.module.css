@@ -38,6 +38,49 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.detailsPanel {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(46, 28, 43, 0.65);
+  padding: 0.75rem;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.detailsImage {
+  width: 100%;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.detailsPanel h3 {
+  margin: 0 0 0.3rem;
+}
+
+.detailsPanel p {
+  margin: 0.2rem 0;
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.actionsCell {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.actionsCell button {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(74, 25, 66, 0.55);
+  color: var(--text);
+  height: 28px;
+  padding: 0 0.55rem;
+  font-size: 0.75rem;
+}
+
 .actionsMenu {
   position: relative;
 }
@@ -105,6 +148,10 @@
 @media (max-width: 767px) {
   .kpiGrid,
   .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .detailsPanel {
     grid-template-columns: 1fr;
   }
 }

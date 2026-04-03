@@ -1,3 +1,6 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import Badge from "@/components/Badge";
 import Icon from "@/components/Icon";
 import KpiCard from "@/components/KpiCard";
@@ -6,7 +9,37 @@ import { agences } from "@/lib/mockData";
 import styles from "./agences.module.css";
 
 export default function AgencesPage() {
+  const [query, setQuery] = useState("");
+  const [region, setRegion] = useState("all");
+  const [abonnement, setAbonnement] = useState("all");
+  const [statut, setStatut] = useState("all");
+  const [conformite, setConformite] = useState("all");
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const pageSize = 6;
+
   const suspendues = agences.filter((a) => a.statut === "Suspendu").length;
+
+  const regions = useMemo(() => Array.from(new Set(agences.map((a) => a.region))), []);
+
+  const filteredAgences = useMemo(() => {
+    return agences.filter((agence) => {
+      if (region !== "all" && agence.region !== region) return false;
+      if (abonnement !== "all" && agence.abonnement !== abonnement) return false;
+      if (statut !== "all" && agence.statut !== statut) return false;
+      if (conformite !== "all" && agence.conformiteLoi25 !== conformite) return false;
+
+      if (!query.trim()) return true;
+
+      const text = `${agence.nom} ${agence.proprietaire}`.toLowerCase();
+      return text.includes(query.toLowerCase());
+    });
+  }, [query, region, abonnement, statut, conformite]);
+
+  const pageCount = Math.max(1, Math.ceil(filteredAgences.length / pageSize));
+  const safePage = Math.min(page, pageCount);
+  const paginatedAgences = filteredAgences.slice((safePage - 1) * pageSize, safePage * pageSize);
+  const selectedAgence = agences.find((a) => a.id === selectedId) ?? null;
 
   return (
     <div className={styles.page}>
@@ -24,32 +57,55 @@ export default function AgencesPage() {
       </section>
 
       <section className={styles.filters}>
-        <input type="search" placeholder="Rechercher une agence..." />
-        <select defaultValue="all">
+        <input
+          type="search"
+          placeholder="Rechercher une agence..."
+          value={query}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            setPage(1);
+          }}
+        />
+        <select value={region} onChange={(event) => { setRegion(event.target.value); setPage(1); }}>
           <option value="all">Région</option>
-          <option>Montréal</option>
-          <option>Québec</option>
-          <option>Laval</option>
+          {regions.map((item) => (
+            <option key={item} value={item}>{item}</option>
+          ))}
         </select>
-        <select defaultValue="all">
+        <select value={abonnement} onChange={(event) => { setAbonnement(event.target.value); setPage(1); }}>
           <option value="all">Abonnement</option>
-          <option>Standard</option>
-          <option>Pro</option>
-          <option>Entreprise</option>
+          <option value="Standard">Standard</option>
+          <option value="Pro">Pro</option>
+          <option value="Entreprise">Entreprise</option>
         </select>
-        <select defaultValue="all">
+        <select value={statut} onChange={(event) => { setStatut(event.target.value); setPage(1); }}>
           <option value="all">Statut</option>
-          <option>Actif</option>
-          <option>En cours</option>
-          <option>Suspendu</option>
+          <option value="Actif">Actif</option>
+          <option value="En cours">En cours</option>
+          <option value="Attention">Attention</option>
+          <option value="Suspendu">Suspendu</option>
         </select>
-        <select defaultValue="all">
+        <select value={conformite} onChange={(event) => { setConformite(event.target.value); setPage(1); }}>
           <option value="all">Conformité</option>
-          <option>Conforme</option>
-          <option>En révision</option>
-          <option>Infraction</option>
+          <option value="Conforme">Conforme</option>
+          <option value="En révision">En révision</option>
+          <option value="Infraction">Infraction</option>
         </select>
       </section>
+
+      {selectedAgence && (
+        <section className={styles.detailsPanel}>
+          <img src={selectedAgence.imageUrl} alt={selectedAgence.nom} className={styles.detailsImage} />
+          <div>
+            <h3>{selectedAgence.nom}</h3>
+            <p>Propriétaire: {selectedAgence.proprietaire}</p>
+            <p>Région: {selectedAgence.region} · Abonnement: {selectedAgence.abonnement}</p>
+            <p>
+              {selectedAgence.employes} employés · {selectedAgence.locationsActives} locations actives · {selectedAgence.transactionsTotal.toLocaleString("fr-CA")} transactions
+            </p>
+          </div>
+        </section>
+      )}
 
       <StatTable
         headers={[
@@ -64,7 +120,7 @@ export default function AgencesPage() {
           "Conformité Loi 25",
           "Actions",
         ]}
-        rows={agences.map((agence) => ({
+        rows={paginatedAgences.map((agence) => ({
           id: agence.id,
           cells: [
             <img
@@ -82,23 +138,18 @@ export default function AgencesPage() {
             agence.transactionsTotal.toLocaleString("fr-CA"),
             agence.derniereActivite,
             <Badge key={`${agence.id}-conf`} statut={agence.conformiteLoi25} />,
-            <details key={`${agence.id}-actions`} className={styles.actionsMenu}>
-              <summary>⋯</summary>
-              <ul>
-                <li>Voir détails</li>
-                <li>Suspendre</li>
-                <li>Contacter</li>
-                <li>Exporter rapport</li>
-              </ul>
-            </details>,
+            <div key={`${agence.id}-actions`} className={styles.actionsCell}>
+              <button type="button" onClick={() => setSelectedId(agence.id)}>Voir détails</button>
+              <button type="button">Contacter</button>
+            </div>,
           ],
         }))}
       />
 
       <footer className={styles.pagination}>
-        <button type="button">Précédent</button>
-        <p>Page 1 sur 4</p>
-        <button type="button">Suivant</button>
+        <button type="button" onClick={() => setPage((p) => Math.max(1, p - 1))}>Précédent</button>
+        <p>Page {safePage} sur {pageCount}</p>
+        <button type="button" onClick={() => setPage((p) => Math.min(pageCount, p + 1))}>Suivant</button>
       </footer>
     </div>
   );
