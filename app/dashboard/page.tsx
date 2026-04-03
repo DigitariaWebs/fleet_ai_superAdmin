@@ -13,6 +13,11 @@ import styles from "./vue.module.css";
 const chartWidth = 680;
 const chartHeight = 250;
 const maxValue = Math.max(...transactionsQuotidiennes30j);
+const minValue = Math.min(...transactionsQuotidiennes30j);
+const avgValue = Math.round(
+  transactionsQuotidiennes30j.reduce((sum, value) => sum + value, 0) /
+    transactionsQuotidiennes30j.length,
+);
 const points = transactionsQuotidiennes30j
   .map((value, index) => {
     const x = (index / (transactionsQuotidiennes30j.length - 1)) * chartWidth;
@@ -36,6 +41,17 @@ const segments = repartitionRoles.map((item) => {
 });
 
 export default function DashboardOverviewPage() {
+  const yTicks = Array.from({ length: 5 }).map((_, index) => {
+    const value = Math.round((maxValue / 4) * (4 - index));
+    const y = (chartHeight / 4) * index;
+    return { value, y };
+  });
+
+  const xTicks = [0, 6, 12, 18, 24, 29].map((index) => {
+    const x = (index / (transactionsQuotidiennes30j.length - 1)) * chartWidth;
+    return { label: `J${index + 1}`, x };
+  });
+
   return (
     <div className={styles.page}>
       <section className={styles.kpiGrid}>
@@ -57,7 +73,7 @@ export default function DashboardOverviewPage() {
           titre="Revenus plateforme"
           valeur={kpis.vueEnsemble.revenusPlateforme.valeur}
           prefixe=""
-          suffixe=" $"
+          suffixe=" €"
           tendance={kpis.vueEnsemble.revenusPlateforme.trend}
           detail={kpis.vueEnsemble.revenusPlateforme.variation}
           icone={<Icon name="money" />}
@@ -75,6 +91,11 @@ export default function DashboardOverviewPage() {
       <section className={styles.chartsGrid}>
         <article className={styles.chartCard}>
           <h3>Transactions quotidiennes — 30 derniers jours</h3>
+          <div className={styles.chartStats}>
+            <span>Min: {minValue}</span>
+            <span>Moyenne: {avgValue}</span>
+            <span>Max: {maxValue}</span>
+          </div>
           <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-label="Graphique des transactions">
             <defs>
               <linearGradient id="fillTransactions" x1="0" y1="0" x2="0" y2="1">
@@ -82,17 +103,34 @@ export default function DashboardOverviewPage() {
                 <stop offset="100%" stopColor="#3EC9F0" stopOpacity="0" />
               </linearGradient>
             </defs>
-            {[0, 1, 2, 3, 4].map((line) => (
-              <line
-                key={line}
-                x1="0"
-                y1={(chartHeight / 4) * line}
-                x2={chartWidth}
-                y2={(chartHeight / 4) * line}
-                stroke="rgba(255,255,255,0.08)"
-                strokeWidth="1"
-              />
+            {yTicks.map((tick) => (
+              <g key={`y-${tick.y}`}>
+                <line
+                  x1="0"
+                  y1={tick.y}
+                  x2={chartWidth}
+                  y2={tick.y}
+                  stroke="rgba(255,255,255,0.08)"
+                  strokeWidth="1"
+                />
+                <text x="8" y={tick.y + 12} className={styles.axisLabel}>
+                  {tick.value}
+                </text>
+              </g>
             ))}
+
+            {xTicks.map((tick) => (
+              <text
+                key={tick.label}
+                x={tick.x}
+                y={chartHeight - 8}
+                textAnchor="middle"
+                className={styles.axisLabel}
+              >
+                {tick.label}
+              </text>
+            ))}
+
             <path d={areaPath} fill="url(#fillTransactions)" />
             <polyline
               fill="none"

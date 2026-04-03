@@ -248,18 +248,18 @@ export const agences: Agence[] = [
 ];
 
 export const utilisateurs: Utilisateur[] = [
-  { id: "U-001", nomComplet: "Amine Haddad", role: "Admin Agence", agence: "Agence Atlas Montréal", statut: "Actif", derniereConnexion: "Aujourd'hui 09:43", consentementEnregistre: true },
-  { id: "U-002", nomComplet: "Sara Mounir", role: "Agent", agence: "FleetPro Québec", statut: "Actif", derniereConnexion: "Aujourd'hui 08:15", consentementEnregistre: true },
-  { id: "U-003", nomComplet: "Mélanie St-Pierre", role: "Secrétaire", agence: "AutoElite Laval", statut: "Actif", derniereConnexion: "Hier 18:21", consentementEnregistre: true },
-  { id: "U-004", nomComplet: "Bilal Othman", role: "Chauffeur", agence: "NovaCar Gatineau", statut: "En cours", derniereConnexion: "Aujourd'hui 10:02", consentementEnregistre: true },
-  { id: "U-005", nomComplet: "Rachid Benali", role: "Agent", agence: "Location VTC Nord", statut: "En cours", derniereConnexion: "Aujourd'hui 07:58", consentementEnregistre: true },
-  { id: "U-006", nomComplet: "Naïma Chouinard", role: "Admin Agence", agence: "PrimeFleet Centre-Ville", statut: "Actif", derniereConnexion: "Aujourd'hui 10:18", consentementEnregistre: true },
-  { id: "U-007", nomComplet: "Félix Dufresne", role: "Chauffeur", agence: "MobiRent Sherbrooke", statut: "Actif", derniereConnexion: "Hier 21:05", consentementEnregistre: true },
-  { id: "U-008", nomComplet: "Samia Rahmani", role: "Agent", agence: "DriveOne Rive-Sud", statut: "Suspendu", derniereConnexion: "Il y a 3 jours", consentementEnregistre: false },
-  { id: "U-009", nomComplet: "Ismaël Bouchard", role: "Secrétaire", agence: "Rent&Go Lévis", statut: "Actif", derniereConnexion: "Aujourd'hui 09:11", consentementEnregistre: true },
-  { id: "U-010", nomComplet: "Yara Lemaire", role: "Agent", agence: "Agence Atlas Montréal", statut: "Actif", derniereConnexion: "Aujourd'hui 10:24", consentementEnregistre: true },
-  { id: "U-011", nomComplet: "Loïc Bergeron", role: "Chauffeur", agence: "FleetPro Québec", statut: "Actif", derniereConnexion: "Aujourd'hui 06:49", consentementEnregistre: true },
-  { id: "U-012", nomComplet: "Clara Nguyen", role: "Admin Agence", agence: "AutoElite Laval", statut: "Actif", derniereConnexion: "Aujourd'hui 08:57", consentementEnregistre: true },
+  { id: "U-001", nomComplet: "Amine Haddad", role: "Admin Agence", agence: "Agence Hexa Paris", statut: "Actif", derniereConnexion: "Aujourd'hui 09:43", consentementEnregistre: true },
+  { id: "U-002", nomComplet: "Sara Mounir", role: "Agent", agence: "Mobilité Lyonnaise", statut: "Actif", derniereConnexion: "Aujourd'hui 08:15", consentementEnregistre: true },
+  { id: "U-003", nomComplet: "Mélanie St-Pierre", role: "Secrétaire", agence: "Seine Drive Paris", statut: "Actif", derniereConnexion: "Hier 18:21", consentementEnregistre: true },
+  { id: "U-004", nomComplet: "Bilal Othman", role: "Chauffeur", agence: "Bordeaux Premium Cars", statut: "En cours", derniereConnexion: "Aujourd'hui 10:02", consentementEnregistre: true },
+  { id: "U-005", nomComplet: "Rachid Benali", role: "Agent", agence: "Riviera Auto Nice", statut: "En cours", derniereConnexion: "Aujourd'hui 07:58", consentementEnregistre: true },
+  { id: "U-006", nomComplet: "Naïma Chouinard", role: "Admin Agence", agence: "Cannes Prestige Auto", statut: "Actif", derniereConnexion: "Aujourd'hui 10:18", consentementEnregistre: true },
+  { id: "U-007", nomComplet: "Félix Dufresne", role: "Chauffeur", agence: "Nantes Horizon Auto", statut: "Actif", derniereConnexion: "Hier 21:05", consentementEnregistre: true },
+  { id: "U-008", nomComplet: "Samia Rahmani", role: "Agent", agence: "Marseille Mobilité", statut: "Suspendu", derniereConnexion: "Il y a 3 jours", consentementEnregistre: false },
+  { id: "U-009", nomComplet: "Ismaël Bouchard", role: "Secrétaire", agence: "Toulouse Location Pro", statut: "Actif", derniereConnexion: "Aujourd'hui 09:11", consentementEnregistre: true },
+  { id: "U-010", nomComplet: "Yara Lemaire", role: "Agent", agence: "Agence Hexa Paris", statut: "Actif", derniereConnexion: "Aujourd'hui 10:24", consentementEnregistre: true },
+  { id: "U-011", nomComplet: "Loïc Bergeron", role: "Chauffeur", agence: "Mobilité Lyonnaise", statut: "Actif", derniereConnexion: "Aujourd'hui 06:49", consentementEnregistre: true },
+  { id: "U-012", nomComplet: "Clara Nguyen", role: "Admin Agence", agence: "Seine Drive Paris", statut: "Actif", derniereConnexion: "Aujourd'hui 08:57", consentementEnregistre: true },
 ];
 
 export const transactions: Transaction[] = [
@@ -317,14 +317,14 @@ export const repartitionRoles = [
 ];
 
 export const activiteRecente = [
-  { agence: "Agence Atlas Montréal", action: "Paiement de location validé", montant: 420, heure: "10:22", statut: "Actif" as StatutGlobal },
-  { agence: "DriveOne Rive-Sud", action: "Transaction marquée pour dommage", montant: 280, heure: "10:14", statut: "Attention" as StatutGlobal },
-  { agence: "FleetPro Québec", action: "Nouveau client enregistré", montant: 0, heure: "10:09", statut: "En cours" as StatutGlobal },
-  { agence: "Location VTC Nord", action: "Contravention signalée", montant: 195, heure: "10:01", statut: "Erreur" as StatutGlobal },
-  { agence: "PrimeFleet Centre-Ville", action: "Abonnement Entreprise renouvelé", montant: 1200, heure: "09:54", statut: "Actif" as StatutGlobal },
-  { agence: "AutoElite Laval", action: "Demande d'accès RGPD traitée", montant: 0, heure: "09:48", statut: "En cours" as StatutGlobal },
-  { agence: "NovaCar Gatineau", action: "Remboursement client partiel", montant: 80, heure: "09:42", statut: "Attention" as StatutGlobal },
-  { agence: "Rent&Go Lévis", action: "Export comptable généré", montant: 0, heure: "09:36", statut: "Actif" as StatutGlobal },
+  { agence: "Agence Hexa Paris", action: "Paiement de location validé", montant: 420, heure: "10:22", statut: "Actif" as StatutGlobal },
+  { agence: "Marseille Mobilité", action: "Transaction marquée pour dommage", montant: 280, heure: "10:14", statut: "Attention" as StatutGlobal },
+  { agence: "Mobilité Lyonnaise", action: "Nouveau client enregistré", montant: 0, heure: "10:09", statut: "En cours" as StatutGlobal },
+  { agence: "Riviera Auto Nice", action: "Contravention signalée", montant: 195, heure: "10:01", statut: "Erreur" as StatutGlobal },
+  { agence: "Cannes Prestige Auto", action: "Abonnement Entreprise renouvelé", montant: 1200, heure: "09:54", statut: "Actif" as StatutGlobal },
+  { agence: "Seine Drive Paris", action: "Demande d'accès RGPD traitée", montant: 0, heure: "09:48", statut: "En cours" as StatutGlobal },
+  { agence: "Bordeaux Premium Cars", action: "Remboursement client partiel", montant: 80, heure: "09:42", statut: "Attention" as StatutGlobal },
+  { agence: "Toulouse Location Pro", action: "Export comptable généré", montant: 0, heure: "09:36", statut: "Actif" as StatutGlobal },
 ];
 
 export const volumeApi7j = [5800, 6420, 7010, 7880, 8420, 9130, 9550];

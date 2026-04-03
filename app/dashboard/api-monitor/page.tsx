@@ -6,23 +6,46 @@ import { apiAlertes, kpis, topAgencesApi, volumeApi7j } from "@/lib/mockData";
 import styles from "./api.module.css";
 
 const width = 960;
-const height = 250;
+const height = 300;
 const maxY = Math.max(...volumeApi7j);
-const points = volumeApi7j
-  .map((value, index) => {
-    const x = (index / (volumeApi7j.length - 1)) * width;
-    const y = height - (value / maxY) * (height - 20);
-    return `${x},${y}`;
-  })
-  .join(" ");
+const minY = Math.min(...volumeApi7j);
+const avgY = Math.round(volumeApi7j.reduce((sum, value) => sum + value, 0) / volumeApi7j.length);
+const paddedMax = Math.ceil(maxY * 1.12);
+const chartInnerTop = 24;
+const chartInnerBottom = 42;
+const chartInnerHeight = height - chartInnerTop - chartInnerBottom;
+
+const pointsData = volumeApi7j.map((value, index) => {
+  const x = (index / (volumeApi7j.length - 1)) * width;
+  const y = chartInnerTop + (1 - value / paddedMax) * chartInnerHeight;
+  return { x, y, value, index };
+});
+
+const points = pointsData.map((point) => `${point.x},${point.y}`).join(" ");
 
 const areaPath = `M0,${height} ${points
   .split(" ")
   .map((p) => `L${p}`)
   .join(" ")} L${width},${height} Z`;
 
+const yTicks = Array.from({ length: 5 }).map((_, index) => {
+  const ratio = 1 - index / 4;
+  const value = Math.round(paddedMax * ratio);
+  const y = chartInnerTop + (1 - value / paddedMax) * chartInnerHeight;
+  return { value, y };
+});
+
+const xTicks = pointsData.map((point) => ({
+  x: point.x,
+  label: point.index === pointsData.length - 1 ? "Aujourd'hui" : `J-${pointsData.length - 1 - point.index}`,
+}));
+
+const trendPct = Math.round(((volumeApi7j[volumeApi7j.length - 1] - volumeApi7j[0]) / volumeApi7j[0]) * 100);
+const trendLabel = trendPct >= 0 ? `+${trendPct}%` : `${trendPct}%`;
+
 export default function ApiMonitorPage() {
   const topVolume = topAgencesApi[0]?.volume ?? 1;
+  const lastPoint = pointsData[pointsData.length - 1];
 
   return (
     <div className={styles.page}>
@@ -34,16 +57,59 @@ export default function ApiMonitorPage() {
       </section>
 
       <article className={styles.areaCard}>
-        <h3>Volume d'appels API — 7 derniers jours</h3>
+        <div className={styles.areaHead}>
+          <h3>Volume d'appels API — 7 derniers jours</h3>
+          <div className={styles.statsRow}>
+            <span>Min {minY.toLocaleString("fr-FR")}</span>
+            <span>Moyenne {avgY.toLocaleString("fr-FR")}</span>
+            <span>Max {maxY.toLocaleString("fr-FR")}</span>
+            <span className={trendPct >= 0 ? styles.trendUp : styles.trendDown}>Tendance {trendLabel}</span>
+          </div>
+        </div>
         <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Volume d'appels API">
           <defs>
             <linearGradient id="apiGradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#3EC9F0" stopOpacity="0.4" />
               <stop offset="100%" stopColor="#3EC9F0" stopOpacity="0" />
             </linearGradient>
+            <linearGradient id="apiStrokeGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#35B7FF" />
+              <stop offset="100%" stopColor="#00E4B8" />
+            </linearGradient>
           </defs>
+
+          {yTicks.map((tick) => (
+            <g key={`y-${tick.y}`}>
+              <line x1="0" y1={tick.y} x2={width} y2={tick.y} className={styles.gridLine} />
+              <text x="10" y={tick.y - 6} className={styles.axisLabel}>
+                {tick.value.toLocaleString("fr-FR")}
+              </text>
+            </g>
+          ))}
+
+          {xTicks.map((tick) => (
+            <text key={tick.label} x={tick.x} y={height - 10} className={styles.axisLabel} textAnchor="middle">
+              {tick.label}
+            </text>
+          ))}
+
           <path d={areaPath} fill="url(#apiGradient)" />
-          <polyline points={points} fill="none" stroke="#3EC9F0" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+          <polyline points={points} fill="none" stroke="url(#apiStrokeGradient)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+
+          {pointsData.map((point) => (
+            <g key={`p-${point.index}`}>
+              <circle cx={point.x} cy={point.y} r="5.5" className={styles.pointOuter} />
+              <circle cx={point.x} cy={point.y} r="3.2" className={styles.pointInner} />
+            </g>
+          ))}
+
+          <g>
+            <line x1={lastPoint.x} y1={lastPoint.y - 34} x2={lastPoint.x} y2={lastPoint.y - 10} className={styles.calloutLine} />
+            <rect x={Math.max(lastPoint.x - 66, 8)} y={Math.max(lastPoint.y - 62, 2)} width="132" height="28" rx="8" className={styles.calloutBox} />
+            <text x={Math.max(lastPoint.x - 52, 16)} y={Math.max(lastPoint.y - 44, 20)} className={styles.calloutText}>
+              {lastPoint.value.toLocaleString("fr-FR")} appels
+            </text>
+          </g>
         </svg>
       </article>
 

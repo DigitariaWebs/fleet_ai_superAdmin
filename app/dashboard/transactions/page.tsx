@@ -13,9 +13,9 @@ export default function TransactionsPage() {
         <KpiCard
           titre="Valeur totale"
           valeur={kpis.transactions.valeurTotale}
-          suffixe=" $"
+          suffixe=" €"
           tendance="+13.1%"
-          detail="Volume CAD"
+          detail="Volume EUR"
           icone={<Icon name="money" />}
         />
         <KpiCard titre="Signalées" valeur={kpis.transactions.signalees} tendance="+1.2%" detail="Surveillance" icone={<Icon name="alert" />} danger />
@@ -43,7 +43,7 @@ export default function TransactionsPage() {
               trx.vehicule,
               trx.client,
               `${trx.debut} → ${trx.fin}`,
-              `${trx.montant.toLocaleString("fr-CA")} $`,
+              `${trx.montant.toLocaleString("fr-FR")} €`,
               <Badge
                 key={`${trx.id}-status`}
                 statut={trx.statut === "Signalée" ? "Erreur" : trx.statut === "En cours" ? "En cours" : trx.statut === "Annulée" ? "Suspendu" : "Actif"}

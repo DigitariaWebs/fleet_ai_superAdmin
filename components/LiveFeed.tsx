@@ -29,7 +29,7 @@ export default function LiveFeed({ titre, items }: LiveFeedProps) {
                 <p className={styles.agence}>{item.agence}</p>
                 <p className={styles.action}>{item.action}</p>
                 <p className={styles.meta}>
-                  {item.montant ? `${item.montant.toLocaleString("fr-CA")} $ CAD` : "Sans montant"} · {item.heure}
+                  {item.montant ? `${item.montant.toLocaleString("fr-FR")} €` : "Sans montant"} · {item.heure}
                 </p>
               </div>
               <Badge statut={item.statut} />

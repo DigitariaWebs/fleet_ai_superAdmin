@@ -25,9 +25,82 @@
   font-size: 0.95rem;
 }
 
+.areaHead {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 0.5rem;
+}
+
+.statsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.statsRow span {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.24rem 0.5rem;
+  border-radius: 999px;
+}
+
+.trendUp {
+  color: #9ef0db;
+  border-color: rgba(72, 219, 166, 0.45);
+  background: rgba(72, 219, 166, 0.14);
+}
+
+.trendDown {
+  color: #ffb0b0;
+  border-color: rgba(255, 107, 107, 0.45);
+  background: rgba(255, 107, 107, 0.12);
+}
+
 .areaCard svg {
   width: 100%;
-  height: 250px;
+  height: 300px;
+}
+
+.gridLine {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1;
+  stroke-dasharray: 5 7;
+}
+
+.axisLabel {
+  fill: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
+.pointOuter {
+  fill: rgba(53, 183, 255, 0.2);
+  stroke: rgba(53, 183, 255, 0.9);
+  stroke-width: 2;
+}
+
+.pointInner {
+  fill: #d8f7ff;
+}
+
+.calloutLine {
+  stroke: rgba(0, 228, 184, 0.75);
+  stroke-width: 1.5;
+}
+
+.calloutBox {
+  fill: rgba(12, 16, 26, 0.92);
+  stroke: rgba(0, 228, 184, 0.4);
+}
+
+.calloutText {
+  fill: rgba(243, 255, 251, 0.95);
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .twoCols {
@@ -43,7 +116,9 @@
 
 .barRow {
   display: grid;
-  gap: 0.35rem;
+  grid-template-columns: minmax(0, 1.25fr) minmax(120px, 1fr) auto;
+  align-items: center;
+  gap: 0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   padding: 0.45rem 0.5rem;
@@ -54,6 +129,13 @@
 .barRow span {
   margin: 0;
   font-size: 0.8rem;
+}
+
+.barRow p {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .barRow span {
@@ -81,10 +163,31 @@
   .twoCols {
     grid-template-columns: 1fr;
   }
+
+  .barRow {
+    grid-template-columns: minmax(0, 1fr) minmax(100px, 1fr) auto;
+  }
 }
 
 @media (max-width: 767px) {
   .kpiGrid {
     grid-template-columns: 1fr;
+  }
+
+  .areaCard svg {
+    height: 250px;
+  }
+
+  .axisLabel {
+    font-size: 11px;
+  }
+
+  .barRow {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .barRow span {
+    justify-self: start;
   }
 }
