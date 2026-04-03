@@ -10,7 +10,7 @@ export default function ConformitePage() {
   return (
     <div className={styles.page}>
       <section className={styles.gaugeCard}>
-        <h3>Score global de conformité Loi 25</h3>
+        <h3>Score global de conformité RGPD</h3>
         <div className={styles.gaugeWrap}>
           <div
             className={styles.gauge}

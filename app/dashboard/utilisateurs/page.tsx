@@ -68,7 +68,7 @@ export default function UtilisateursPage() {
           <option>Suspendu</option>
         </select>
         <select defaultValue="all">
-          <option value="all">Consentement Loi 25</option>
+          <option value="all">Consentement RGPD</option>
           <option>Enregistré</option>
           <option>Non enregistré</option>
         </select>

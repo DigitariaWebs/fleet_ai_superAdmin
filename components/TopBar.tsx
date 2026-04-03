@@ -12,7 +12,7 @@ const titleMap: Record<string, string> = {
   "/dashboard/utilisateurs": "Utilisateurs",
   "/dashboard/transactions": "Transactions",
   "/dashboard/api-monitor": "API Monitor",
-  "/dashboard/conformite": "Conformité Loi 25",
+  "/dashboard/conformite": "Conformité RGPD",
   "/dashboard/parametres": "Paramètres",
 };
 
@@ -53,7 +53,7 @@ export default function TopBar() {
           title="Masquer les données personnelles"
         >
           <span className={styles.btnIcon}><Icon name="shield" size={16} /></span>
-          Loi 25
+          RGPD
         </button>
         <time>{timeOnly}</time>
       </div>

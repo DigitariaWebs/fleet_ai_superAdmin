@@ -117,7 +117,7 @@ export default function AgencesPage() {
           "Locations en cours",
           "Total transactions",
           "Dernière activité",
-          "Conformité Loi 25",
+          "Conformité RGPD",
           "Actions",
         ]}
         rows={paginatedAgences.map((agence) => ({

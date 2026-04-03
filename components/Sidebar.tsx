@@ -14,7 +14,7 @@ const navItems = [
   { label: "Utilisateurs", href: "/dashboard/utilisateurs", icon: "users" as const },
   { label: "Transactions", href: "/dashboard/transactions", icon: "card" as const },
   { label: "API Monitor", href: "/dashboard/api-monitor", icon: "plug" as const },
-  { label: "Conformité Loi 25", href: "/dashboard/conformite", icon: "shield" as const },
+  { label: "Conformité RGPD", href: "/dashboard/conformite", icon: "shield" as const },
   { label: "Paramètres", href: "/dashboard/parametres", icon: "settings" as const },
 ];
 
